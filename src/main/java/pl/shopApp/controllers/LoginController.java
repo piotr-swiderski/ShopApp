@@ -43,6 +43,9 @@ public class LoginController {
             } else {
                 if (rs.getString("Password").equals(loginPassword.getText())) {
                     System.out.println("Login");
+                    Controller controller = new Controller();
+                    controller.start();
+
                 } else {
                     System.out.println("Wrong password");
                 }

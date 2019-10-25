@@ -20,7 +20,7 @@ public class JdbcLogin {
 
     public static Statement logToDataBase() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
         // Setup the connection with the DB
             DBLogin = "tBBHPYyqTO";

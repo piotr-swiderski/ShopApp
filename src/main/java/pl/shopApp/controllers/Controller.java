@@ -7,10 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pl.shopApp.JdbcLogin;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Controller {
 
@@ -20,18 +23,54 @@ public class Controller {
 
     @FXML
     public void initialize() {
+
+    }
+
+    public void start() {
+        Stage primaryStage = new Stage();
+        FXMLLoader loader = null;
+        try {
+            loader = new FXMLLoader(new File("D:\\JavaFX\\ShopApp\\src\\main\\java\\pl\\" +
+                    "shopApp\\resources\\mainScreen.fxml").toURI().toURL());
+
+            Parent root = loader.load();
+            primaryStage.setTitle("Hello World");
+            primaryStage.setScene(new Scene(root));
+            primaryStage.setMinHeight(800);
+            primaryStage.setMaxHeight(800);
+            primaryStage.setMinWidth(1200);
+            primaryStage.setMaxWidth(1200);
+            primaryStage.show();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    private void buttonLogin(){
-        openLoginWindow();
+    private void buttonLogOff() {
+        try {
+            Statement st = JdbcLogin.getStatement();
+            st.close();
+            openLoginWindow();
+        } catch (SQLException e) {
+            System.out.println("Filed to logoff");
+        }
     }
 
     @FXML
-    private void buttonItems(){
+    private void buttonAccount() {
         CashierAdd cashierAdd = new CashierAdd();
         mainPane.setCenter(cashierAdd);
     }
+
+    @FXML
+    private void buttonItems() {
+        ProductAdd productAdd = new ProductAdd();
+        mainPane.setCenter(productAdd);
+    }
+
 
 
     private void openLoginWindow() {

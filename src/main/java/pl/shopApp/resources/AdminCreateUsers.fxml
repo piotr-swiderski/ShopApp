@@ -17,75 +17,80 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextField fx:id="name" layoutX="60.0" layoutY="72.0">
+                  <TextField fx:id="name" layoutX="59.0" layoutY="78.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="surname" layoutX="60.0" layoutY="130.0">
+                  <TextField fx:id="surname" layoutX="59.0" layoutY="136.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="email" layoutX="60.0" layoutY="188.0">
+                  <TextField fx:id="email" layoutX="59.0" layoutY="194.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="login" layoutX="60.0" layoutY="246.0">
+                  <TextField fx:id="login" layoutX="59.0" layoutY="252.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="password" layoutX="60.0" layoutY="304.0">
+                  <PasswordField fx:id="password" layoutX="59.0" layoutY="310.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </PasswordField>
-                  <PasswordField fx:id="confirmPassword" layoutX="60.0" layoutY="362.0">
+                  <PasswordField fx:id="confirmPassword" layoutX="59.0" layoutY="368.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </PasswordField>
-                  <ComboBox fx:id="role_user" layoutX="78.0" layoutY="426.0" prefWidth="150.0" scaleX="1.2" scaleY="1.2" visibleRowCount="2" />
-                  <Button layoutX="111.0" layoutY="471.0" mnemonicParsing="false" onAction="#buttonRegistry" text="Rejestruj">
+                  <ComboBox fx:id="role_user" layoutX="77.0" layoutY="432.0" prefWidth="150.0" scaleX="1.2" scaleY="1.2" visibleRowCount="2" />
+                  <Button layoutX="110.0" layoutY="477.0" mnemonicParsing="false" onAction="#buttonRegistry" text="Rejestruj">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Text layoutX="139.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imie">
+                  <Text layoutX="138.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imie">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="119.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwisko">
+                  <Text layoutX="118.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwisko">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="135.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                  <Text layoutX="134.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="133.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+                  <Text layoutX="132.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="116.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                  <Text layoutX="115.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="86.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password">
+                  <Text layoutX="85.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="105.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uprawnienia">
+                  <Text layoutX="104.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uprawnienia">
                      <font>
                         <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="90.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj konto">
+                     <font>
+                        <Font size="23.0" />
                      </font>
                   </Text>
                </children>
@@ -94,11 +99,12 @@
                <children>
                   <TableView fx:id="tableUser" layoutX="25.0" layoutY="74.0" prefHeight="421.0" prefWidth="507.0">
                     <columns>
-                      <TableColumn fx:id="tableName" prefWidth="86.0" text="Imie" />
-                      <TableColumn fx:id="tableSurname" prefWidth="86.0" text="Nazwisko" />
-                        <TableColumn fx:id="tableEmail" prefWidth="164.0" text="Email" />
+                        <TableColumn fx:id="tableID" prefWidth="36.0" text="ID" />
+                      <TableColumn fx:id="tableName" prefWidth="75.0" text="Imie" />
+                      <TableColumn fx:id="tableSurname" prefWidth="75.0" text="Nazwisko" />
+                        <TableColumn fx:id="tableEmail" prefWidth="170.0" text="Email" />
                         <TableColumn fx:id="tableLogin" minWidth="2.0" prefWidth="85.0" text="Login" />
-                        <TableColumn fx:id="tableRole" minWidth="0.0" prefWidth="85.0" text="Konto" />
+                        <TableColumn fx:id="tableRole" minWidth="0.0" prefWidth="65.0" text="Konto" />
                     </columns>
                   </TableView>
                   <Text layoutX="84.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista kont zarejestrowanych w bazie:">

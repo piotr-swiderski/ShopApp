@@ -33,6 +33,8 @@ public class CashierAddController {
     @FXML
     TableView<UserAccount> tableUser;
     @FXML
+    TableColumn<UserAccount, Number> tableID;
+    @FXML
     TableColumn<Object, Object> tableName;
     @FXML
     TableColumn<Object, Object> tableSurname;
@@ -60,6 +62,7 @@ public class CashierAddController {
     private void buttonRegistry() {
         if (confirmPassword.getText().equals(password.getText())) {
             UserAccount userAccount = new UserAccount(
+                    null,
                     name.getText(),
                     surname.getText(),
                     email.getText(),
@@ -67,13 +70,12 @@ public class CashierAddController {
                     password.getText(),
                     role_user.getValue()
             );
-            System.out.println(role_user.getValue());
             try {
                 userAccount.addUserToBase();
             } catch (SQLException e) {
                 System.out.println(e + "User isn't add");
             }
-            tableUser.getItems().addAll(userAccount);
+            updateTable();
         }
     }
 
@@ -81,10 +83,11 @@ public class CashierAddController {
         List<UserAccount> dataTable = new ArrayList<>();
         try {
             Statement statement = JdbcLogin.getStatement();
-            String query = "SELECT name, surname, email, login, USER_ROLE FROM tBBHPYyqTO.ShopUser";
+            String query = "SELECT ID, name, surname, email, login, USER_ROLE FROM tBBHPYyqTO.ShopUser";
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 dataTable.add(new UserAccount(
+                        rs.getLong("ID"),
                         rs.getString("name"),
                         rs.getString("surname"),
                         rs.getString("email"),
@@ -93,6 +96,7 @@ public class CashierAddController {
                         rs.getString("user_role")
                 ));
             }
+            tableUser.getItems().clear();
             tableUser.getItems().addAll(dataTable);
         } catch (SQLException e) {
             System.out.println(e + "User from base isn't download");
@@ -107,6 +111,8 @@ public class CashierAddController {
         tableEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         tableLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
         tableRole.setCellValueFactory(new PropertyValueFactory<>("user_role"));
+        tableID.setCellValueFactory(new PropertyValueFactory<UserAccount,Number>("ID"));
+
     }
 
 }

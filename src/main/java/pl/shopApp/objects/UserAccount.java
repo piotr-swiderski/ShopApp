@@ -7,14 +7,16 @@ import java.sql.Statement;
 
 public class UserAccount {
 
-    private final String name;
+    private Long ID;
+    private String name;
     private String surname;
     private String email;
     private String login;
     private String password;
     private String user_role;
 
-    public UserAccount(String name, String surname, String email, String login, String password, String user_role) {
+    public UserAccount(Long ID, String name, String surname, String email, String login, String password, String user_role) {
+        this.ID = ID;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -45,6 +47,14 @@ public class UserAccount {
 
     public String getUser_role() {
         return user_role;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
     public boolean addUserToBase() throws SQLException {
