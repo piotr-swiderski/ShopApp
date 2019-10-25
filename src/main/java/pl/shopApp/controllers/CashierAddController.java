@@ -49,10 +49,10 @@ public class CashierAddController {
     @FXML
     private void initialize() {
         role_user.getItems().addAll(
-                "cashier",
-                "admin"
+                "ROLE_USER",
+                "ROLE_ADMIN"
         );
-        role_user.setValue("cashier");
+        role_user.setValue("ROLE_USER");
         setCellValueFactoryOfTable();
         updateTable();
     }

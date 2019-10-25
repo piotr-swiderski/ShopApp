@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pl.shopApp.JdbcLogin;
 
@@ -15,24 +15,17 @@ import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Controller {
-
+public class UserController {
 
     @FXML
     BorderPane mainPane;
-
-    @FXML
-    public void initialize() {
-
-    }
 
     public void start() {
         Stage primaryStage = new Stage();
         FXMLLoader loader = null;
         try {
             loader = new FXMLLoader(new File("D:\\JavaFX\\ShopApp\\src\\main\\java\\pl\\" +
-                    "shopApp\\resources\\mainScreen.fxml").toURI().toURL());
-
+                    "shopApp\\resources\\UserMainScreen.fxml").toURI().toURL());
             Parent root = loader.load();
             primaryStage.setTitle("Hello World");
             primaryStage.setScene(new Scene(root));
@@ -48,12 +41,11 @@ public class Controller {
         }
     }
 
-    @FXML
-    private void buttonLogOff() {
+    public void buttonLogOff() {
         try {
             Statement st = JdbcLogin.getStatement();
             st.close();
-            Stage stage = (Stage)mainPane.getScene().getWindow();
+            Stage stage = (Stage) mainPane.getScene().getWindow();
             stage.close();
             openLoginWindow();
         } catch (SQLException e) {
@@ -61,19 +53,15 @@ public class Controller {
         }
     }
 
-    @FXML
-    private void buttonAccount() {
-        CashierAdd cashierAdd = new CashierAdd();
-        mainPane.setCenter(cashierAdd);
-    }
-
-    @FXML
-    private void buttonItems() {
+    public void buttonProducts() {
         ProductAdd productAdd = new ProductAdd();
         mainPane.setCenter(productAdd);
     }
 
-
+    public void buttonAddBill() {
+        BillAdd billAdd = new BillAdd();
+        mainPane.setCenter(billAdd);
+    }
 
     private void openLoginWindow() {
         Stage stage = new Stage();
@@ -91,5 +79,4 @@ public class Controller {
         stage.setTitle("Login window");
         stage.show();
     }
-
 }

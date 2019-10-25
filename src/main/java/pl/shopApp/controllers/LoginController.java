@@ -1,10 +1,13 @@
 package pl.shopApp.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pl.shopApp.JdbcLogin;
@@ -22,42 +25,59 @@ public class LoginController {
     private Statement dbStatement;
     private String loginService;
     private String passwordService;
+    private LoginModel loginModel = new LoginModel();
 
     @FXML
     TextField loginLogin;
     @FXML
     PasswordField loginPassword;
+    @FXML
+    Button loginToService;
+    @FXML
+    RadioButton loginAsAdmin;
+    @FXML
+    TextField text_conection;
+    @FXML
+    TextField database_connection;
 
     @FXML
     private void initialize() {
         dbStatement = jdbcLogin.logToDataBase();
-    }
-
-    @FXML
-    private void loginToService() {
-        try {
-            String sql = String.format("SELECT Login, Password FROM tBBHPYyqTO.Users WHERE Login = '%s'", loginLogin.getText());
-            ResultSet rs = dbStatement.executeQuery(sql);
-            if (!rs.next()) {
-                System.out.println("Login isn't in base");
-            } else {
-                if (rs.getString("Password").equals(loginPassword.getText())) {
-                    System.out.println("Login");
-                    Controller controller = new Controller();
-                    controller.start();
-
-                } else {
-                    System.out.println("Wrong password");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Can't read from DB information from table User");
+        if(dbStatement != null){
+            database_connection.setText("Connected to the database");
+        }else{
+            database_connection.setText("Not connected to the database");
         }
     }
 
     @FXML
-    private void buttonRegistration(){
+    private void loginToService(ActionEvent event) {
+        System.out.println(getRole());
+        try {
+            if (this.loginModel.isLogin(loginLogin.getText(), loginPassword.getText(), getRole())) {
+                Stage stage = (Stage) this.loginToService.getScene().getWindow();
+                stage.close();
+                switch (getRole()) {
+                    case "ROLE_USER":
+                        UserController userController = new UserController();
+                        userController.start();
+                        break;
+                    case "ROLE_ADMIN":
+                        Controller controller = new Controller();
+                        controller.start();
+                        break;
+                }
+            }else{
+                text_conection.setText("Not connection, check your login or password");
+            }
+        } catch (Exception e) {
+            System.out.println(e + "Not login");
+            text_conection.setText("Not connection");
+        }
+    }
+
+    @FXML
+    private void buttonRegistration() {
         Stage stage = new Stage();
         Parent parent;
         try {
@@ -74,7 +94,13 @@ public class LoginController {
         }
     }
 
-
+    private String getRole() {
+        if (loginAsAdmin.isSelected()) {
+            return "ROLE_ADMIN";
+        } else {
+            return "ROLE_USER";
+        }
+    }
 
 
     public Statement getDbStatement() {
