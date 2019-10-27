@@ -1,25 +1,12 @@
 package pl.shopApp.controllers.admin;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.geometry.Bounds;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import pl.shopApp.controllers.LoginModel;
+import pl.shopApp.controllers.DBQueries;
 import pl.shopApp.objects.Bill;
 
 import java.util.ArrayList;
@@ -49,7 +36,7 @@ public class ShowRankingController {
 
     @FXML
     private void initialize() {
-        billList = LoginModel.getBills();
+        billList = DBQueries.getBills();
 
     }
 

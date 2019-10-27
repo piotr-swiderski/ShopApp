@@ -8,9 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import pl.shopApp.JdbcLogin;
-import pl.shopApp.controllers.LoginModel;
+import pl.shopApp.controllers.DBQueries;
 import pl.shopApp.controllers.ProductAdd;
-import pl.shopApp.controllers.user.BillAdd;
 import pl.shopApp.objects.Product;
 
 import java.io.File;
@@ -30,7 +29,7 @@ public class UserController {
     @FXML
     private void initialize(){
         textLogin.setEditable(false);
-        textLogin.setText(String.format("Zalogowany: %s",LoginModel.getUserLogin()));
+        textLogin.setText(String.format("Zalogowany: %s", DBQueries.getUserLogin()));
     }
 
     public void start() {
@@ -99,7 +98,7 @@ public class UserController {
     private void billNotSend() {
         if (UserCreateBillController.billList.size() != 0) {
             List<Product> billList = UserCreateBillController.billList;
-            LoginModel.correctBillBase(billList);
+            DBQueries.correctBillBase(billList);
         }
     }
 

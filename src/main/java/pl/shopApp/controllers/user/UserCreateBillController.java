@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pl.shopApp.controllers.LoginController;
-import pl.shopApp.controllers.LoginModel;
+import pl.shopApp.controllers.DBQueries;
 import pl.shopApp.objects.Bill;
 import pl.shopApp.objects.Product;
 
@@ -73,7 +73,7 @@ public class UserCreateBillController {
     }
 
     private void updateProductDB() {
-        productList = LoginModel.getProducts();
+        productList = DBQueries.getProducts();
         setCellValueFactoryOfTable();
         updateTableProducts();
     }
@@ -100,7 +100,7 @@ public class UserCreateBillController {
                 cost = cost + Double.parseDouble(productPrice.getText()) * Double.parseDouble(productQuantity.getText());
                 cost = (int) (cost * 100 + 0.5) / 100.0;
                 textCost.setText(String.valueOf(cost));
-                LoginModel.bookProduct(productID.getValue(), Integer.parseInt(productQuantity.getText()));
+                DBQueries.bookProduct(productID.getValue(), Integer.parseInt(productQuantity.getText()));
                 updateProductDB();
             } else {
                 textError.setVisible(true);
@@ -112,8 +112,8 @@ public class UserCreateBillController {
     public void buttonCreateBill() {
         if (billList.size() > 0) {
             billList.stream().forEach(System.out::println);
-            LoginModel.editQuantityProduct(billList);
-            LoginModel.addBill(new Bill(null, "", billList.toString(), cost, LoginController.login));
+            DBQueries.editQuantityProduct(billList);
+            DBQueries.addBill(new Bill(null, "", billList.toString(), cost, LoginController.login));
             billList = new ArrayList<>();
             cost = 0;
             textCost.setText(String.valueOf(cost));

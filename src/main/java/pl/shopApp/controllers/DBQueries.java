@@ -10,13 +10,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginModel {
+public class DBQueries {
 
     static Connection connection = null;
     public static String userLogin = "";
 
 
-    public LoginModel() {
+    public DBQueries() {
         JdbcLogin.logToDataBase();
         connection = JdbcLogin.getConnection();
 

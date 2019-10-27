@@ -11,7 +11,6 @@ import pl.shopApp.JdbcLogin;
 import pl.shopApp.controllers.admin.CashierAdd;
 import pl.shopApp.controllers.admin.ShowBills;
 import pl.shopApp.controllers.admin.ShowRanking;
-import pl.shopApp.controllers.user.UserCreateBillController;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +29,7 @@ public class Controller {
     @FXML
     public void initialize() {
         textLogin.setEditable(false);
-        textLogin.setText(String.format("Zalogowany: %s", LoginModel.getUserLogin()));
+        textLogin.setText(String.format("Zalogowany: %s", DBQueries.getUserLogin()));
     }
 
     public void start() {

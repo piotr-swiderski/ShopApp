@@ -2,7 +2,7 @@ package pl.shopApp.controllers.user;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import pl.shopApp.controllers.LoginModel;
+import pl.shopApp.controllers.DBQueries;
 import pl.shopApp.objects.UserAccount;
 
 public class UserEditAccountController {
@@ -67,7 +67,7 @@ public class UserEditAccountController {
             return false;
         }
 
-        LoginModel.setChangeAccountData(editName, editSurname, editEmail);
+        DBQueries.setChangeAccountData(editName, editSurname, editEmail);
         takeAccountData();
         return true;
 
@@ -81,7 +81,7 @@ public class UserEditAccountController {
             textError.setText("Hasla sa rozne");
         } else {
             if (password.getText().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_.,])(?=\\S+$).{8,}$")) {
-                LoginModel.updateAccountPassword(password.getText());
+                DBQueries.updateAccountPassword(password.getText());
                 textError.setVisible(true);
                 textError.setText("Haslo zostalo edytowane");
                 confirmPassword.setText("");
@@ -96,7 +96,7 @@ public class UserEditAccountController {
 
 
     private void takeAccountData() {
-        userData = LoginModel.getUserData();
+        userData = DBQueries.getUserData();
         accountCurrentName.setEditable(false);
         accountCurrentSurname.setEditable(false);
         accountCurrentEmail.setEditable(false);

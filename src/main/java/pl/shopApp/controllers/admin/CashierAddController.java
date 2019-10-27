@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pl.shopApp.JdbcLogin;
-import pl.shopApp.controllers.LoginModel;
+import pl.shopApp.controllers.DBQueries;
 import pl.shopApp.objects.UserAccount;
 
 import java.sql.ResultSet;
@@ -77,7 +77,7 @@ public class CashierAddController {
                         role_user.getValue()
                 );
 
-                if (!LoginModel.addUserToBase(userAccount)) {
+                if (!DBQueries.addUserToBase(userAccount)) {
                     System.out.println("user isn't add");
                     textError.setVisible(true);
                     textError.setText("Nie dodano, email lub login jest juz w bazie");

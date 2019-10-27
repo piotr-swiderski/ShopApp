@@ -6,7 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import pl.shopApp.controllers.LoginModel;
+import pl.shopApp.controllers.DBQueries;
 import pl.shopApp.objects.Bill;
 
 import java.util.List;
@@ -39,7 +39,7 @@ public class ShowBillsController {
 
     @FXML
     private void initialize() {
-        billList = LoginModel.getBills();
+        billList = DBQueries.getBills();
         for (Bill bill : billList) {
             billID.getItems().add(bill.getID());
             if (!billsUser.getItems().contains(bill.getWorker_name())) {

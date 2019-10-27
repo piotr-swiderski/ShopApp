@@ -20,8 +20,8 @@ public class JdbcLogin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            DBLogin = "tBBHPYyqTO";
-            String password = "ZBuzFC5SDN";
+            DBLogin = "";
+            String password = "";
             connection = DriverManager
                     .getConnection("jdbc:mysql://remotemysql.com:3306/tBBHPYyqTO", DBLogin, password);
             statement = connection.createStatement();
