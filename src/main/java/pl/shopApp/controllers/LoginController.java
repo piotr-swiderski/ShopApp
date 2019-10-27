@@ -79,23 +79,6 @@ public class LoginController {
         }
     }
 
-    @FXML
-    private void buttonRegistration() {
-        Stage stage = new Stage();
-        Parent parent;
-        try {
-            FXMLLoader loader = new FXMLLoader(new File("D:\\JavaFX\\ShopApp\\src\\main\\java\\pl\\" +
-                    "shopApp\\resources\\Registration.fxml").toURI().toURL());
-            parent = loader.load();
-            stage.setTitle("Registration");
-            stage.setScene(new Scene(parent));
-            stage.show();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private String getRole() {
         if (loginAsAdmin.isSelected()) {
