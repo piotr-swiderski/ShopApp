@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root prefHeight="599.0" prefWidth="897.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.shopApp.controllers.user.UserEditAccountController">
+   <children>
+      <SplitPane dividerPositions="0.35571687840290384" layoutX="14.0" layoutY="14.0" prefHeight="571.0" prefWidth="872.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="changeName" layoutX="59.0" layoutY="78.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="changeSurname" layoutX="59.0" layoutY="136.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="changeEmail" layoutX="59.0" layoutY="194.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="password" layoutX="59.0" layoutY="341.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </PasswordField>
+                  <PasswordField fx:id="confirmPassword" layoutX="59.0" layoutY="399.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </PasswordField>
+                  <Button layoutX="75.0" layoutY="246.0" mnemonicParsing="false" onAction="#acceptChanges" text="Akceptuj zmiany">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Text layoutX="138.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imie">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="118.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwisko">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="134.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="115.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="85.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="90.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edycja Konta">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textError" layoutX="32.0" layoutY="530.0" prefHeight="25.0" prefWidth="250.0" />
+                  <Button layoutX="91.0" layoutY="440.0" mnemonicParsing="false" onAction="#acceptChangePassword" text="Zmień hasło">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="385.0" style="-fx-scale-shape: 3;">
+               <children>
+                  <Text layoutX="248.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Konto">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="accountCurrentName" layoutX="216.0" layoutY="77.0" prefHeight="31.0" prefWidth="219.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="accountCurrentSurname" layoutX="216.0" layoutY="127.0" prefHeight="31.0" prefWidth="219.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="accountCurrentEmail" layoutX="216.0" layoutY="174.0" prefHeight="31.0" prefWidth="219.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="89.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imie">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="69.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwisko">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="85.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="84.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="56.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uprawnienia">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="accountCurrentLogin" layoutX="216.0" layoutY="219.0" prefHeight="31.0" prefWidth="219.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="accountCurrentRole" layoutX="216.0" layoutY="269.0" prefHeight="31.0" prefWidth="219.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</fx:root>

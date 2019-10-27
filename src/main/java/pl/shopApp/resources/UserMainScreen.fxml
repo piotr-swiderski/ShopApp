@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.shopApp.controllers.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.shopApp.controllers.user.UserController">
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
    </padding>
@@ -23,11 +24,12 @@
                      <items>
                         <Button mnemonicParsing="false" onAction="#buttonLogOff" prefHeight="41.0" prefWidth="90.0" text="Log off" />
                         <Button mnemonicParsing="false" onAction="#buttonProducts" prefHeight="41.0" prefWidth="106.0" text="Lista produktów" />
-                        <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="103.0" text="Lista produktow" />
                         <Button mnemonicParsing="false" onAction="#buttonAddBill" prefHeight="41.0" prefWidth="120.0" text="Stworz rachunek" />
+                        <Button mnemonicParsing="false" onAction="#buttonEditAccount" prefHeight="41.0" prefWidth="103.0" text="Edycja konta" />
                      </items>
                   </ToolBar>
                   <ImageView fitHeight="56.0" fitWidth="123.0" layoutX="39.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextField fx:id="textLogin" alignment="CENTER" layoutX="962.0" layoutY="28.0" />
                </children>
             </Pane>
          </top>

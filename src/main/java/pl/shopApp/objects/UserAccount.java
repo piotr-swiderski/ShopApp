@@ -2,6 +2,8 @@ package pl.shopApp.objects;
 
 import pl.shopApp.JdbcLogin;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -57,14 +59,5 @@ public class UserAccount {
         this.ID = ID;
     }
 
-    public boolean addUserToBase() throws SQLException {
-            Statement dbStatement = JdbcLogin.getStatement();
-            String addUser = String.format(
-                    "insert into tBBHPYyqTO.ShopUser(name,surname,email,login,password,USER_ROLE) values ('%s','%s','%s','%s','%s','%s')",
-                    name,surname,email,login,password,user_role
-            );
-            dbStatement.executeUpdate(addUser);
-
-        return true;
-    }
 }
+

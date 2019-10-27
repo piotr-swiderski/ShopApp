@@ -20,7 +20,6 @@ public class JdbcLogin {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Setup the connection with the DB
             DBLogin = "tBBHPYyqTO";
             String password = "ZBuzFC5SDN";
             connection = DriverManager

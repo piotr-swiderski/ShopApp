@@ -9,14 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import pl.shopApp.JdbcLogin;
+import pl.shopApp.controllers.user.UserController;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LoginController {
@@ -26,6 +27,7 @@ public class LoginController {
     private String loginService;
     private String passwordService;
     private LoginModel loginModel = new LoginModel();
+    public static String login;
 
     @FXML
     TextField loginLogin;
@@ -53,6 +55,7 @@ public class LoginController {
     @FXML
     private void loginToService(ActionEvent event) {
         System.out.println(getRole());
+        login = loginLogin.getText();
         try {
             if (this.loginModel.isLogin(loginLogin.getText(), loginPassword.getText(), getRole())) {
                 Stage stage = (Stage) this.loginToService.getScene().getWindow();
@@ -101,6 +104,8 @@ public class LoginController {
             return "ROLE_USER";
         }
     }
+
+
 
 
     public Statement getDbStatement() {

@@ -1,9 +1,10 @@
-package pl.shopApp.controllers;
+package pl.shopApp.controllers.admin;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pl.shopApp.JdbcLogin;
+import pl.shopApp.controllers.LoginModel;
 import pl.shopApp.objects.UserAccount;
 
 import java.sql.ResultSet;
@@ -44,6 +45,8 @@ public class CashierAddController {
     TableColumn<Object, Object> tableLogin;
     @FXML
     TableColumn<Object, Object> tableRole;
+    @FXML
+    TextField textError;
 
 
     @FXML
@@ -54,28 +57,33 @@ public class CashierAddController {
         );
         role_user.setValue("ROLE_USER");
         setCellValueFactoryOfTable();
+        textError.setVisible(false);
         updateTable();
     }
 
 
     @FXML
     private void buttonRegistry() {
-        if (confirmPassword.getText().equals(password.getText())) {
-            UserAccount userAccount = new UserAccount(
-                    null,
-                    name.getText(),
-                    surname.getText(),
-                    email.getText(),
-                    login.getText(),
-                    password.getText(),
-                    role_user.getValue()
-            );
-            try {
-                userAccount.addUserToBase();
-            } catch (SQLException e) {
-                System.out.println(e + "User isn't add");
+        textError.setVisible(false);
+        if (checkUserProperties()) {
+            if (confirmPassword.getText().equals(password.getText())) {
+                UserAccount userAccount = new UserAccount(
+                        null,
+                        name.getText(),
+                        surname.getText(),
+                        email.getText(),
+                        login.getText(),
+                        password.getText(),
+                        role_user.getValue()
+                );
+
+                if (!LoginModel.addUserToBase(userAccount)) {
+                    System.out.println("user isn't add");
+                    textError.setVisible(true);
+                    textError.setText("Nie dodano, email lub login jest juz w bazie");
+                }
+                updateTable();
             }
-            updateTable();
         }
     }
 
@@ -111,7 +119,34 @@ public class CashierAddController {
         tableEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         tableLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
         tableRole.setCellValueFactory(new PropertyValueFactory<>("user_role"));
-        tableID.setCellValueFactory(new PropertyValueFactory<UserAccount,Number>("ID"));
+        tableID.setCellValueFactory(new PropertyValueFactory<UserAccount, Number>("ID"));
+
+    }
+
+
+    private boolean checkUserProperties() {
+        if (name.getText().equals("") || surname.getText().equals("")) {
+            textError.setVisible(true);
+            textError.setText("Podaj imie i nazwisko");
+            return false;
+        }
+        if (!email.getText().matches("[\\w]+@[a-zA-Z0-9]+.[a-z]+")) {
+            textError.setVisible(true);
+            textError.setText("Zly adres email");
+            return false;
+        }
+        if(login.getText().equals("")){
+            textError.setVisible(true);
+            textError.setText("Wpisz login");
+            return false;
+        }
+        if (!password.getText().matches(
+                "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_.,])(?=\\S+$).{8,}$")) {
+            textError.setVisible(true);
+            textError.setText("Blad: haslo bez cyfry i znaku specjalnego");
+            return false;
+        }
+        return true;
 
     }
 

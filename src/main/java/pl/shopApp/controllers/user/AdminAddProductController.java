@@ -1,4 +1,4 @@
-package pl.shopApp.controllers;
+package pl.shopApp.controllers.user;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -45,13 +45,12 @@ public class AdminAddProductController {
                 null,
                 productName.getText(),
                 Integer.parseInt(productQuantityAvailable.getText()),
-                Double.parseDouble(productPrice.getText())
+                Double.parseDouble(productPrice.getText()),
+                -1
         );
-        try {
-            product.addProductToBase();
-        } catch (SQLException e) {
-            System.out.println(e + " Product isn't add to base");
-        }
+
+        product.addProductToBase();
+
         updateTable();
     }
 
@@ -59,15 +58,16 @@ public class AdminAddProductController {
         List<Product> dataTable = new ArrayList<>();
         try {
             Statement statement = JdbcLogin.getStatement();
-            String query = "SELECT ID, name, quantity, price FROM tBBHPYyqTO.ShopProduct";
+            String query = "SELECT * FROM tBBHPYyqTO.ShopProduct";
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 dataTable.add(new Product(
                         rs.getLong("ID"),
                         rs.getString("name"),
                         rs.getInt("quantity"),
-                        rs.getDouble("price"))
-                );
+                        rs.getDouble("price"),
+                        rs.getInt("available_quantity")
+                ));
             }
             tableProduct.getItems().clear();
             tableProduct.getItems().addAll(dataTable);

@@ -8,6 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import pl.shopApp.JdbcLogin;
+import pl.shopApp.controllers.admin.CashierAdd;
+import pl.shopApp.controllers.admin.ShowBills;
+import pl.shopApp.controllers.admin.ShowRanking;
+import pl.shopApp.controllers.user.UserCreateBillController;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,10 +24,13 @@ public class Controller {
 
     @FXML
     BorderPane mainPane;
+    @FXML
+    TextField textLogin;
 
     @FXML
     public void initialize() {
-
+        textLogin.setEditable(false);
+        textLogin.setText(String.format("Zalogowany: %s", LoginModel.getUserLogin()));
     }
 
     public void start() {
@@ -53,7 +60,7 @@ public class Controller {
         try {
             Statement st = JdbcLogin.getStatement();
             st.close();
-            Stage stage = (Stage)mainPane.getScene().getWindow();
+            Stage stage = (Stage) mainPane.getScene().getWindow();
             stage.close();
             openLoginWindow();
         } catch (SQLException e) {
@@ -74,6 +81,12 @@ public class Controller {
     }
 
 
+    @FXML
+    private void buttonBills() {
+        ShowBills showBills = new ShowBills();
+        mainPane.setCenter(showBills);
+    }
+
 
     private void openLoginWindow() {
         Stage stage = new Stage();
@@ -91,5 +104,12 @@ public class Controller {
         stage.setTitle("Login window");
         stage.show();
     }
+
+    @FXML
+    private void buttonRanking() {
+        ShowRanking showRanking = new ShowRanking();
+        mainPane.setCenter(showRanking);
+    }
+
 
 }
